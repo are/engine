@@ -1,15 +1,18 @@
 {
+  "name": "@are/engine",
+  "author": "Artur Wojciechowski <me@iama.re>",
   "version": "0.1.0",
-  "license": "MIT",
+  "license": "Hippocratic-2.1",
+  "engines": {
+    "node": ">=10"
+  },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "module": "dist/engine.esm.js",
   "files": [
     "dist",
     "src"
   ],
-  "engines": {
-    "node": ">=10"
-  },
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
@@ -19,6 +22,14 @@
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^4.9.0",
+    "husky": "^4.3.0",
+    "size-limit": "^4.9.0",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.0.3",
+    "typescript": "^4.1.2"
+  },
   "peerDependencies": {},
   "husky": {
     "hooks": {
@@ -27,13 +38,10 @@
   },
   "prettier": {
     "printWidth": 80,
-    "semi": true,
+    "semi": false,
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "engine",
-  "author": "Artur Wojciechowski",
-  "module": "dist/engine.esm.js",
   "size-limit": [
     {
       "path": "dist/engine.cjs.production.min.js",
@@ -43,13 +51,5 @@
       "path": "dist/engine.esm.js",
       "limit": "10 KB"
     }
-  ],
-  "devDependencies": {
-    "@size-limit/preset-small-lib": "^4.9.0",
-    "husky": "^4.3.0",
-    "size-limit": "^4.9.0",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
-  }
+  ]
 }
