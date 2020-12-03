@@ -1,7 +1,7 @@
 import { AssetDefinition, AssetType } from './AssetDefinition'
 
 export abstract class Asset {
-  type: AssetType
+  abstract type: AssetType
 
   constructor(public definition: AssetDefinition) {}
 
