@@ -3,11 +3,13 @@
   "compilerOptions": {
     "module": "esnext",
     "lib": ["dom", "esnext"],
+    "target": "ESNext",
     "importHelpers": true,
     "declaration": true,
     "sourceMap": true,
     "rootDir": "./src",
     "strict": true,
+    "strictNullChecks": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
