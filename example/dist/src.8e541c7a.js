@@ -2947,4 +2947,4 @@ engine.registerScene('grid', GridScene_1.GridScene);
 engine.start();
 engine.pushScene('grid');
 },{"../../src":"WdSo","./scenes/GridScene":"ZPkJ"}]},{},["QCba"], null)
-//# sourceMappingURL=/src.8e541c7a.js.map
+//# sourceMappingURL=/engine/example/dist/src.8e541c7a.js.map
