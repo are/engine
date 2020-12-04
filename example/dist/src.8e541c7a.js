@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../../src/assetLoader/AssetDefinition.ts":[function(require,module,exports) {
+})({"hnz3":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -141,7 +141,7 @@ class AssetDefinition {
 }
 
 exports.AssetDefinition = AssetDefinition;
-},{}],"../../src/assetLoader/Asset.ts":[function(require,module,exports) {
+},{}],"MAfq":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -167,7 +167,7 @@ class Asset {
 }
 
 exports.Asset = Asset;
-},{"./AssetDefinition":"../../src/assetLoader/AssetDefinition.ts"}],"../../src/assetLoader/assetTypes/ImageAsset.ts":[function(require,module,exports) {
+},{"./AssetDefinition":"hnz3"}],"Book":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -189,7 +189,7 @@ class ImageAsset extends _Asset.Asset {
 }
 
 exports.ImageAsset = ImageAsset;
-},{"../Asset":"../../src/assetLoader/Asset.ts","../AssetDefinition":"../../src/assetLoader/AssetDefinition.ts"}],"../../src/assetLoader/assetTypes/SoundAsset.ts":[function(require,module,exports) {
+},{"../Asset":"MAfq","../AssetDefinition":"hnz3"}],"nMdM":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -211,7 +211,7 @@ class SoundAsset extends _Asset.Asset {
 }
 
 exports.SoundAsset = SoundAsset;
-},{"../Asset":"../../src/assetLoader/Asset.ts","../AssetDefinition":"../../src/assetLoader/AssetDefinition.ts"}],"../../src/assetLoader/assetTypes/index.ts":[function(require,module,exports) {
+},{"../Asset":"MAfq","../AssetDefinition":"hnz3"}],"Vdsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -243,7 +243,7 @@ Object.keys(_SoundAsset).forEach(function (key) {
     }
   });
 });
-},{"./ImageAsset":"../../src/assetLoader/assetTypes/ImageAsset.ts","./SoundAsset":"../../src/assetLoader/assetTypes/SoundAsset.ts"}],"../../src/assetLoader/AssetLoader.ts":[function(require,module,exports) {
+},{"./ImageAsset":"Book","./SoundAsset":"nMdM"}],"lA61":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -354,7 +354,7 @@ class AssetLoader {
 }
 
 exports.AssetLoader = AssetLoader;
-},{"./AssetDefinition":"../../src/assetLoader/AssetDefinition.ts","./assetTypes":"../../src/assetLoader/assetTypes/index.ts"}],"../../src/assetLoader/index.ts":[function(require,module,exports) {
+},{"./AssetDefinition":"hnz3","./assetTypes":"Vdsx"}],"VSoi":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -412,7 +412,7 @@ Object.keys(_assetTypes).forEach(function (key) {
     }
   });
 });
-},{"./Asset":"../../src/assetLoader/Asset.ts","./AssetDefinition":"../../src/assetLoader/AssetDefinition.ts","./AssetLoader":"../../src/assetLoader/AssetLoader.ts","./assetTypes":"../../src/assetLoader/assetTypes/index.ts"}],"../../src/math/Vector2.ts":[function(require,module,exports) {
+},{"./Asset":"MAfq","./AssetDefinition":"hnz3","./AssetLoader":"lA61","./assetTypes":"Vdsx"}],"huun":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -510,7 +510,7 @@ exports.Vector2 = Vector2;
 const vec2 = (x, y) => Vector2.of(x, y ?? x);
 
 exports.vec2 = vec2;
-},{}],"../../src/inputManager/InputState.ts":[function(require,module,exports) {
+},{}],"CA2L":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -556,7 +556,7 @@ class InputState {
 }
 
 exports.InputState = InputState;
-},{}],"../../src/inputManager/InputManager.ts":[function(require,module,exports) {
+},{}],"cx2N":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -656,7 +656,7 @@ class InputManager {
 }
 
 exports.InputManager = InputManager;
-},{"./InputState":"../../src/inputManager/InputState.ts","../math/Vector2":"../../src/math/Vector2.ts"}],"../../src/engine/Engine.ts":[function(require,module,exports) {
+},{"./InputState":"CA2L","../math/Vector2":"huun"}],"mnx3":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -759,7 +759,7 @@ class Engine {
 }
 
 exports.Engine = Engine;
-},{"../math/Vector2":"../../src/math/Vector2.ts","../inputManager/InputManager":"../../src/inputManager/InputManager.ts"}],"../../src/entity/Entity.ts":[function(require,module,exports) {
+},{"../math/Vector2":"huun","../inputManager/InputManager":"cx2N"}],"H2cD":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -807,7 +807,7 @@ class Entity {
 }
 
 exports.Entity = Entity;
-},{}],"../../src/entity/TextEntity.ts":[function(require,module,exports) {
+},{}],"m6zO":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -849,7 +849,7 @@ class TextEntity extends _Entity.Entity {
 }
 
 exports.TextEntity = TextEntity;
-},{"../../src/entity/Entity":"../../src/entity/Entity.ts"}],"../../src/inputManager/Key.ts":[function(require,module,exports) {
+},{"../../src/entity/Entity":"H2cD"}],"oaWb":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -985,7 +985,7 @@ exports.Key = Key;
 function isKey(keyCode) {
   return keyCode <= Key.Backspace && keyCode >= Key.Quote;
 }
-},{}],"../../src/scene/Scene.ts":[function(require,module,exports) {
+},{}],"mohF":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1072,7 +1072,7 @@ class Scene {
 }
 
 exports.Scene = Scene;
-},{}],"../../src/ticker/Ticker.ts":[function(require,module,exports) {
+},{}],"PcY8":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1083,7 +1083,7 @@ exports.Ticker = void 0;
 class Ticker {}
 
 exports.Ticker = Ticker;
-},{}],"../../src/ticker/AnimationFrameTicker.ts":[function(require,module,exports) {
+},{}],"dBYq":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1159,7 +1159,7 @@ class AnimationFrameTicker extends _Ticker.Ticker {
 }
 
 exports.AnimationFrameTicker = AnimationFrameTicker;
-},{"./Ticker":"../../src/ticker/Ticker.ts"}],"../../src/widgets/Widget.ts":[function(require,module,exports) {
+},{"./Ticker":"PcY8"}],"ur7p":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1179,7 +1179,7 @@ class Widget {
 }
 
 exports.Widget = Widget;
-},{}],"../../src/widgets/MousePath.ts":[function(require,module,exports) {
+},{}],"NTlZ":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1243,7 +1243,7 @@ class MousePathWidget extends _Widget.Widget {
 }
 
 exports.MousePathWidget = MousePathWidget;
-},{"./Widget":"../../src/widgets/Widget.ts"}],"../../src/index.ts":[function(require,module,exports) {
+},{"./Widget":"ur7p"}],"WdSo":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1418,7 +1418,7 @@ Object.keys(_MousePath).forEach(function (key) {
     }
   });
 });
-},{"./assetLoader/index":"../../src/assetLoader/index.ts","./engine/Engine":"../../src/engine/Engine.ts","./entity/Entity":"../../src/entity/Entity.ts","./entity/TextEntity":"../../src/entity/TextEntity.ts","./inputManager/InputManager":"../../src/inputManager/InputManager.ts","./inputManager/InputState":"../../src/inputManager/InputState.ts","./inputManager/Key":"../../src/inputManager/Key.ts","./math/Vector2":"../../src/math/Vector2.ts","./scene/Scene":"../../src/scene/Scene.ts","./ticker/Ticker":"../../src/ticker/Ticker.ts","./ticker/AnimationFrameTicker":"../../src/ticker/AnimationFrameTicker.ts","./widgets/Widget":"../../src/widgets/Widget.ts","./widgets/MousePath":"../../src/widgets/MousePath.ts"}],"../node_modules/process/browser.js":[function(require,module,exports) {
+},{"./assetLoader/index":"VSoi","./engine/Engine":"mnx3","./entity/Entity":"H2cD","./entity/TextEntity":"m6zO","./inputManager/InputManager":"cx2N","./inputManager/InputState":"CA2L","./inputManager/Key":"oaWb","./math/Vector2":"huun","./scene/Scene":"mohF","./ticker/Ticker":"PcY8","./ticker/AnimationFrameTicker":"dBYq","./widgets/Widget":"ur7p","./widgets/MousePath":"NTlZ"}],"pBGv":[function(require,module,exports) {
 
 // shim for using process in browser
 var process = module.exports = {}; // cached from whatever global is present so that test runners that stub it
@@ -1627,7 +1627,7 @@ process.chdir = function (dir) {
 process.umask = function () {
   return 0;
 };
-},{}],"../node_modules/@tweenjs/tween.js/dist/tween.esm.js":[function(require,module,exports) {
+},{}],"MxHY":[function(require,module,exports) {
 var process = require("process");
 "use strict";
 
@@ -2590,7 +2590,7 @@ var _exports = {
 };
 var _default = _exports;
 exports.default = _default;
-},{"process":"../node_modules/process/browser.js"}],"widgets/AnimationWidget.ts":[function(require,module,exports) {
+},{"process":"pBGv"}],"QTEq":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2646,7 +2646,7 @@ class AnimatedValueWidget extends src_1.Widget {
 }
 
 exports.AnimatedValueWidget = AnimatedValueWidget;
-},{"../../../src":"../../src/index.ts","@tweenjs/tween.js":"../node_modules/@tweenjs/tween.js/dist/tween.esm.js"}],"widgets/PathOnGridWidget.ts":[function(require,module,exports) {
+},{"../../../src":"WdSo","@tweenjs/tween.js":"MxHY"}],"BusB":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2768,7 +2768,7 @@ class TrackingPathOnGridWidget extends src_1.Widget {
 }
 
 exports.TrackingPathOnGridWidget = TrackingPathOnGridWidget;
-},{"../../../src":"../../src/index.ts"}],"scenes/GridScene.ts":[function(require,module,exports) {
+},{"../../../src":"WdSo"}],"ZPkJ":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2926,7 +2926,7 @@ class GridScene extends src_1.Scene {
 }
 
 exports.GridScene = GridScene;
-},{"../../../src":"../../src/index.ts","../widgets/AnimationWidget":"widgets/AnimationWidget.ts","../widgets/PathOnGridWidget":"widgets/PathOnGridWidget.ts"}],"index.ts":[function(require,module,exports) {
+},{"../../../src":"WdSo","../widgets/AnimationWidget":"QTEq","../widgets/PathOnGridWidget":"BusB"}],"QCba":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2946,209 +2946,5 @@ const engine = new src_1.Engine({
 engine.registerScene('grid', GridScene_1.GridScene);
 engine.start();
 engine.pushScene('grid');
-},{"../../src":"../../src/index.ts","./scenes/GridScene":"scenes/GridScene.ts"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
-var global = arguments[3];
-var OVERLAY_ID = '__parcel__error__overlay__';
-var OldModule = module.bundle.Module;
-
-function Module(moduleName) {
-  OldModule.call(this, moduleName);
-  this.hot = {
-    data: module.bundle.hotData,
-    _acceptCallbacks: [],
-    _disposeCallbacks: [],
-    accept: function (fn) {
-      this._acceptCallbacks.push(fn || function () {});
-    },
-    dispose: function (fn) {
-      this._disposeCallbacks.push(fn);
-    }
-  };
-  module.bundle.hotData = null;
-}
-
-module.bundle.Module = Module;
-var checkedAssets, assetsToAccept;
-var parent = module.bundle.parent;
-
-if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
-  var hostname = "" || location.hostname;
-  var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61931" + '/');
-
-  ws.onmessage = function (event) {
-    checkedAssets = {};
-    assetsToAccept = [];
-    var data = JSON.parse(event.data);
-
-    if (data.type === 'update') {
-      var handled = false;
-      data.assets.forEach(function (asset) {
-        if (!asset.isNew) {
-          var didAccept = hmrAcceptCheck(global.parcelRequire, asset.id);
-
-          if (didAccept) {
-            handled = true;
-          }
-        }
-      }); // Enable HMR for CSS by default.
-
-      handled = handled || data.assets.every(function (asset) {
-        return asset.type === 'css' && asset.generated.js;
-      });
-
-      if (handled) {
-        console.clear();
-        data.assets.forEach(function (asset) {
-          hmrApply(global.parcelRequire, asset);
-        });
-        assetsToAccept.forEach(function (v) {
-          hmrAcceptRun(v[0], v[1]);
-        });
-      } else if (location.reload) {
-        // `location` global exists in a web worker context but lacks `.reload()` function.
-        location.reload();
-      }
-    }
-
-    if (data.type === 'reload') {
-      ws.close();
-
-      ws.onclose = function () {
-        location.reload();
-      };
-    }
-
-    if (data.type === 'error-resolved') {
-      console.log('[parcel] ✨ Error resolved');
-      removeErrorOverlay();
-    }
-
-    if (data.type === 'error') {
-      console.error('[parcel] 🚨  ' + data.error.message + '\n' + data.error.stack);
-      removeErrorOverlay();
-      var overlay = createErrorOverlay(data);
-      document.body.appendChild(overlay);
-    }
-  };
-}
-
-function removeErrorOverlay() {
-  var overlay = document.getElementById(OVERLAY_ID);
-
-  if (overlay) {
-    overlay.remove();
-  }
-}
-
-function createErrorOverlay(data) {
-  var overlay = document.createElement('div');
-  overlay.id = OVERLAY_ID; // html encode message and stack trace
-
-  var message = document.createElement('div');
-  var stackTrace = document.createElement('pre');
-  message.innerText = data.error.message;
-  stackTrace.innerText = data.error.stack;
-  overlay.innerHTML = '<div style="background: black; font-size: 16px; color: white; position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; padding: 30px; opacity: 0.85; font-family: Menlo, Consolas, monospace; z-index: 9999;">' + '<span style="background: red; padding: 2px 4px; border-radius: 2px;">ERROR</span>' + '<span style="top: 2px; margin-left: 5px; position: relative;">🚨</span>' + '<div style="font-size: 18px; font-weight: bold; margin-top: 20px;">' + message.innerHTML + '</div>' + '<pre>' + stackTrace.innerHTML + '</pre>' + '</div>';
-  return overlay;
-}
-
-function getParents(bundle, id) {
-  var modules = bundle.modules;
-
-  if (!modules) {
-    return [];
-  }
-
-  var parents = [];
-  var k, d, dep;
-
-  for (k in modules) {
-    for (d in modules[k][1]) {
-      dep = modules[k][1][d];
-
-      if (dep === id || Array.isArray(dep) && dep[dep.length - 1] === id) {
-        parents.push(k);
-      }
-    }
-  }
-
-  if (bundle.parent) {
-    parents = parents.concat(getParents(bundle.parent, id));
-  }
-
-  return parents;
-}
-
-function hmrApply(bundle, asset) {
-  var modules = bundle.modules;
-
-  if (!modules) {
-    return;
-  }
-
-  if (modules[asset.id] || !bundle.parent) {
-    var fn = new Function('require', 'module', 'exports', asset.generated.js);
-    asset.isNew = !modules[asset.id];
-    modules[asset.id] = [fn, asset.deps];
-  } else if (bundle.parent) {
-    hmrApply(bundle.parent, asset);
-  }
-}
-
-function hmrAcceptCheck(bundle, id) {
-  var modules = bundle.modules;
-
-  if (!modules) {
-    return;
-  }
-
-  if (!modules[id] && bundle.parent) {
-    return hmrAcceptCheck(bundle.parent, id);
-  }
-
-  if (checkedAssets[id]) {
-    return;
-  }
-
-  checkedAssets[id] = true;
-  var cached = bundle.cache[id];
-  assetsToAccept.push([bundle, id]);
-
-  if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
-    return true;
-  }
-
-  return getParents(global.parcelRequire, id).some(function (id) {
-    return hmrAcceptCheck(global.parcelRequire, id);
-  });
-}
-
-function hmrAcceptRun(bundle, id) {
-  var cached = bundle.cache[id];
-  bundle.hotData = {};
-
-  if (cached) {
-    cached.hot.data = bundle.hotData;
-  }
-
-  if (cached && cached.hot && cached.hot._disposeCallbacks.length) {
-    cached.hot._disposeCallbacks.forEach(function (cb) {
-      cb(bundle.hotData);
-    });
-  }
-
-  delete bundle.cache[id];
-  bundle(id);
-  cached = bundle.cache[id];
-
-  if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
-    cached.hot._acceptCallbacks.forEach(function (cb) {
-      cb();
-    });
-
-    return true;
-  }
-}
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.ts"], null)
-//# sourceMappingURL=/src.77de5100.js.map
+},{"../../src":"WdSo","./scenes/GridScene":"ZPkJ"}]},{},["QCba"], null)
+//# sourceMappingURL=/src.8e541c7a.js.map
