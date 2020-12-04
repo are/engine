@@ -5,7 +5,7 @@ import { TickerState } from '../ticker/Ticker'
 import { Widget } from '../widgets/Widget'
 
 export type EntityUpdateContext = {
-  ctx: CanvasRenderingContext2D
+  matrix: DOMMatrix
   inputState: InputState
   tickerState: TickerState
   canvasSize: Vector2

@@ -73,25 +73,33 @@ export class Engine {
 
     const inputState = this.input.getState()
 
-    const updateContext: EntityUpdateContext = {
-      ctx: this.context,
+    let updateContext: EntityUpdateContext = {
+      matrix: this.context.getTransform(),
       inputState: inputState,
       tickerState: tickerState,
       canvasSize: this.canvasSize,
+    }
+
+    let drawContext: EntityDrawContext = {
+      ctx: this.context,
+      tickerState: tickerState,
+      canvasSize: this.canvasSize,
+    }
+
+    for (let scene of this.stack) {
+      scene.prepare(updateContext, drawContext)
     }
 
     for (let scene of this.stack) {
       scene.update(updateContext)
     }
 
-    const drawContext: EntityDrawContext = {
-      ctx: this.context,
-      tickerState: tickerState,
-      canvasSize: this.canvasSize,
+    for (let scene of this.stack) {
+      scene.draw(drawContext)
     }
 
     for (let scene of this.stack) {
-      scene.draw(drawContext)
+      scene.cleanup(updateContext, drawContext)
     }
 
     this.input.processTick()

@@ -23,6 +23,17 @@ export abstract class Scene {
 
   willMount(): void {}
   didUnmount(): void {}
+
+  prepare(
+    _updateContext: EntityUpdateContext,
+    _drawContext: EntityDrawContext
+  ): void {}
+
+  cleanup(
+    _updateContext: EntityUpdateContext,
+    _drawContext: EntityDrawContext
+  ): void {}
+
   willUpdate(_context: EntityUpdateContext): void {}
   didUpdate(_context: EntityUpdateContext): void {}
   willDraw(_context: EntityDrawContext): void {}

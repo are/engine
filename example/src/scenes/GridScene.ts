@@ -1,3 +1,4 @@
+import { Easing } from '@tweenjs/tween.js'
 import {
   Entity,
   EntityDrawContext,
@@ -7,6 +8,8 @@ import {
   vec2,
   Vector2,
 } from '../../../src'
+import { AnimatedValueWidget } from '../widgets/AnimationWidget'
+import { TrackingPathOnGridWidget } from '../widgets/PathOnGridWidget'
 
 export class GridEntity extends Entity {
   widgets = []
@@ -27,127 +30,74 @@ export class GridEntity extends Entity {
 }
 
 const prepare = (v: Vector2) => v.add(-6, -4).mul(100)
-const invert = (v: Vector2) => v.div(100).add(6, 4)
-
-class TrackEntity extends Entity {
-  widgets = []
-  constructor(private path: Vector2[]) {
-    super()
-  }
-
-  update() {}
-
-  draw({ ctx }: EntityDrawContext) {
-    ctx.beginPath()
-    ctx.strokeStyle = 'black'
-    ctx.lineWidth = 100
-    ctx.lineJoin = 'round'
-    ctx.lineCap = 'round'
-
-    ctx.moveTo(...this.path[0].pipe(prepare).e)
-
-    for (let point of this.path.slice(1)) {
-      ctx.lineTo(...point.pipe(prepare).e)
-    }
-
-    ctx.stroke()
-  }
-}
 
 class CreateTrackEntity extends Entity {
-  widgets = []
+  trackWidget = new TrackingPathOnGridWidget(vec2(13, 9), vec2(100))
 
-  private isTracking = false
+  tween = new AnimatedValueWidget({ size: 0 })
+  lastPoint = new AnimatedValueWidget({ x: 0, y: 0 })
 
-  private startingPoint: Vector2 | null = null
-  private nextPoint: Vector2 | null = null
-  private path: Vector2[] = []
+  widgets = [this.trackWidget, this.tween, this.lastPoint]
 
-  update({ inputState, ctx }: EntityUpdateContext) {
-    if (this.isTracking === false && inputState.isJustPressed(Key.LMB)) {
-      const candidate = inputState.mouse
-        .transform(ctx.getTransform().inverse())
-        .snapToGrid(vec2(100))
-        .pipe(invert)
+  path: Vector2[] = []
 
-      if (
-        candidate.x >= 0 &&
-        candidate.x <= 12 &&
-        candidate.y >= 0 &&
-        candidate.y <= 8
-      ) {
-        this.isTracking = true
-        this.startingPoint = candidate
-        this.path.push(candidate)
-      }
-    } else if (this.isTracking === true && inputState.isPressed(Key.LMB)) {
-      const candidate = inputState.mouse
-        .transform(ctx.getTransform().inverse())
-        .snapToGrid(vec2(100))
-        .pipe(invert)
+  update({ inputState, matrix }: EntityUpdateContext) {
+    this.trackWidget.whenPathStarts(() => {
+      console.log('tarl')
+      this.lastPoint.set(this.trackWidget.path[0].o)
+    })
 
-      if (
-        candidate.x >= 0 &&
-        candidate.x <= 12 &&
-        candidate.y >= 0 &&
-        candidate.y <= 8
-      ) {
-        if (
-          !this.path[this.path.length - 1].equals(candidate) &&
-          this.path[this.path.length - 1].distance(candidate) === 1
-        ) {
-          const index = this.path.findIndex(v => v.equals(candidate))
+    this.trackWidget.whenPathUpdates(() => {
+      const oldPath = this.path
+      const newPath = this.trackWidget.path.slice(0)
+      if (newPath.length > 1) {
+        this.tween.update({ size: 26 }, 250)
 
-          if (index === -1) {
-            this.nextPoint = candidate
-            this.path.push(candidate)
-          } else if (index === this.path.length - 2) {
-            this.nextPoint = candidate
-            this.path = this.path.slice(0, index)
-            this.path.push(candidate)
-          }
+        if (oldPath.length > newPath.length) {
+          this.lastPoint.set(oldPath[oldPath.length - 1].o)
+          this.lastPoint
+            .update(newPath[newPath.length - 1].o, 50)
+            .onComplete(() => {
+              this.path = newPath
+            })
+            .onStop(() => {
+              this.path = newPath
+            })
+        } else if (oldPath.length < newPath.length) {
+          this.path = newPath
+          this.lastPoint.set(newPath[newPath.length - 2].o)
+          this.lastPoint.update(newPath[newPath.length - 1].o, 150)
         }
       }
-    }
+    })
 
-    if (this.isTracking === true && inputState.isJustReleased(Key.LMB)) {
-      this.startingPoint = null
-      this.nextPoint = null
-      this.path = []
-      this.isTracking = false
-    }
+    this.trackWidget.whenPathEnds(() => {
+      this.tween.update({ size: 0 }, 150).onComplete(() => {
+        this.trackWidget.clear()
+        this.path = []
+      })
+    })
   }
   draw({ ctx }: EntityDrawContext) {
     if (this.path.length > 1) {
+      const path = this.path.slice(0, this.path.length - 1)
       ctx.beginPath()
       ctx.strokeStyle = 'black'
-      ctx.lineWidth = 50
+      ctx.lineWidth = this.tween.state.size * 2
       ctx.lineJoin = 'round'
       ctx.lineCap = 'round'
 
-      ctx.moveTo(...this.path[0].pipe(prepare).e)
+      ctx.moveTo(...path[0].pipe(prepare).e)
 
-      for (let point of this.path.slice(1)) {
+      for (let point of path.slice(1)) {
         ctx.lineTo(...point.pipe(prepare).e)
       }
 
+      const lastPoint = Vector2.from(this.lastPoint.state).pipe(prepare)
+
+      ctx.lineTo(...lastPoint.e)
+
       ctx.stroke()
-    }
-
-    if (this.startingPoint) {
-      ctx.fillStyle = 'rgba(255, 0, 0, 0.4)'
-      ctx.beginPath()
-      ctx.arc(...this.startingPoint.pipe(prepare).e, 10, 0, Math.PI * 2)
-      ctx.closePath()
-      ctx.fill()
-    }
-
-    if (this.nextPoint) {
-      ctx.fillStyle = 'rgba(0, 255, 0, 0.4)'
-      ctx.beginPath()
-      ctx.arc(...this.nextPoint.pipe(prepare).e, 10, 0, Math.PI * 2)
-      ctx.closePath()
-      ctx.fill()
     }
   }
 }
@@ -171,14 +121,21 @@ export class GridScene extends Scene {
     this.add(new CreateTrackEntity())
   }
 
-  willUpdate({ ctx, canvasSize }: EntityDrawContext) {
+  prepare(
+    updateContext: EntityUpdateContext,
+    { ctx, canvasSize }: EntityDrawContext
+  ) {
     ctx.save()
     const half = canvasSize.div(2)
 
     ctx.translate(half.x, half.y)
+
+    updateContext.matrix = ctx.getTransform()
   }
 
-  didDraw({ ctx }: EntityDrawContext) {
+  cleanup(updateContext: EntityUpdateContext, { ctx }: EntityDrawContext) {
     ctx.restore()
+
+    updateContext.matrix = ctx.getTransform()
   }
 }
